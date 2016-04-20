@@ -42,6 +42,29 @@ body {
 }
 
 /*
+*User Accounts Section
+*/
+.user-account-section {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.login-link-text {
+    font-size: 32px;
+
+}
+
+#login-dropdown-list {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.accounts-dialog {
+    width: 300px;
+}
+/*
 *New Blog Post Section
 */
 .new-blog-post {
