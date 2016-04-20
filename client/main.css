@@ -16,11 +16,18 @@ body {
 *Class selectors
 *
 */
+.bg-white {
+    background: white;
+}
 
 .container {
     border-top: 2px solid dodgerblue;
     background: white;
     padding-bottom: 25px;
+}
+
+.private {
+    display: none;
 }
 
 /*
@@ -64,9 +71,15 @@ body {
 .accounts-dialog {
     width: 300px;
 }
+
+.stats {
+    padding: 10px;
+    margin-top: 25px;
+}
 /*
 *New Blog Post Section
 */
+
 .new-blog-post {
     background: #eee;
     padding: 10px;
@@ -85,7 +98,8 @@ body {
 *All Posts section
 */
 .all-posts-section {
-    background: #eee;
+   background: #eee;
+    border-top: 1px solid dodgerblue;
 }
 
 .each-post {
@@ -95,6 +109,22 @@ body {
     word-wrap: break-word;
 }
 
-.each-post:nth-child(even) {
-    background: white;
+.single-post-time {
+    font-size: 12px;
+}
+
+.user-options {
+    text-align: center;
+    padding: 5px 5px 20px 5px;
+    font-size: 16px;
+    border-bottom: 1px solid dodgerblue;
+}
+
+.delete, .toggle-edit, .toggle-private {
+    margin: 0 5px 0 5px;
+}
+
+.delete:hover, .toggle-edit:hover, .toggle-private:hover {
+    cursor: pointer;
+
 }

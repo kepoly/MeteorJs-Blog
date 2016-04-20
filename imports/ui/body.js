@@ -32,7 +32,7 @@ Template.body.helpers({
         return Posts.find({ owner: { $in: [Meteor.userId()] } }).count();
     },
     totalCount() {
-        return Posts.find({}, { sort: { createdAt: -1 } }).count();
+        return Posts.find({ private: false  }, { sort: { createdAt: -1 } }).count();
     }
 });
 

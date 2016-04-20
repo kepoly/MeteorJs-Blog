@@ -7,9 +7,16 @@
 
     <section class="user-account-section">
         {{> loginButtons}}
+        <div class="stats">
+{{#if currentUser}}
+           <span>My Total Posts: {{userCount}} - </span>
+    {{/if}}
+            <span>Total Posts on Meteor Blog: {{totalCount}}</span>
+        </div>
     </section>
-
+{{#if currentUser}}
     <section class="new-post-section">
+        <h3 class="text-center">Submit a new Blog Post</h3>
         <!-- Insert new blog post form if user is logged in. -->
         <form class="new-blog-post">
             <input type="text" name="title" placeholder="New Post Title" input pattern=".{3,25}" required title="3min 25max" class="form-control" />
@@ -17,8 +24,9 @@
             <input type="submit" class="btn btn-primary form-control new-blog-post-submit" />
         </form>
     </section>
-
+{{/if}}
     <section class="all-posts-section">
+
     {{#each posts}}
         {{> post}}
         {{/each}}

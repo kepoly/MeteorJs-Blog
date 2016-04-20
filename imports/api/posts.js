@@ -22,7 +22,7 @@ if(Meteor.isServer) {
 
 Meteor.methods({
     'posts.insert'(title, body) {
-        "use strict";
+
         check(title, String);
         check(body, String);
 
@@ -39,5 +39,51 @@ Meteor.methods({
             private: false,
             editing: false,
         });
+    },
+    'posts.remove'(postId) {
+
+        check(postId, String);
+
+        const post = Posts.findOne(postId);
+
+        if(post.private && post.owner !== Meteor.userId()) {
+            throw new Meteor.Error('delete-access-not-authorized')
+        }
+        Posts.remove(postId);
+    },
+    'posts.edit'(postId, editingNow) {
+        check(postId, String);
+        check(editingNow, Boolean);
+
+        const post = Posts.findOne(postId);
+
+        if(post.owner !== Meteor.userId()) {
+            throw new Meteor.Error('set-private-access-not-authorized');
+        }
+        Posts.update(postId, { $set: { editing: editingNow }});
+    },
+    'posts.update'(postId, title, body) {
+        check(postId, String);
+        check(title, String);
+        check(body, String);
+
+        const post = Posts.findOne(postId);
+
+        if(post.owner !== Meteor.userId()) {
+            throw new Meteor.Error('set-private-access-not-authorized');
+        }
+        Posts.update(postId, { $set: { title: title, body: body, editing: false }});
+    },
+    'posts.setPrivate'(postId, setToPrivate) {
+        "use strict";
+        check(postId, String);
+        check(setToPrivate, Boolean);
+
+        const post = Posts.findOne(postId);
+
+        if(post.owner !== Meteor.userId()) {
+            throw new Meteor.Error('set-private-access-not-authorized');
+        }
+        Posts.update(postId, { $set: { private: setToPrivate } });
     },
 });
