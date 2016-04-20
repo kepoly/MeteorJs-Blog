@@ -1,1 +1,58 @@
 /* CSS declarations go here */
+@import url(https://fonts.googleapis.com/css?family=Cabin);
+
+/*
+*
+* Basic Styles
+*
+*/
+body {
+    font-family: 'Cabin', sans-serif;
+    background: #eee;
+}
+
+/*
+*
+*Class selectors
+*
+*/
+
+.container {
+    border-top: 2px solid dodgerblue;
+    background: white;
+    padding-bottom: 25px;
+}
+
+/*
+*Header Section
+*/
+.main-header {
+    padding: 15px;
+}
+
+.logo-text {
+    font-size: 44px;
+    text-align: center;
+}
+/*
+*Footer Section
+*/
+.main-footer {
+    margin-top: 10px;
+}
+
+/*
+*New Blog Post Section
+*/
+.new-blog-post {
+    background: #eee;
+    padding: 10px;
+}
+
+.new-blog-post input[type="text"] {
+    margin: 5px 0;
+}
+
+.new-blog-post-submit {
+    margin-top: 25px;
+}
