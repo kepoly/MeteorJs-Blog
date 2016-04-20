@@ -12,14 +12,16 @@
     <section class="new-post-section">
         <!-- Insert new blog post form if user is logged in. -->
         <form class="new-blog-post">
-            <input type="text" name="title" placeholder="New Post Title" class="form-control" />
-            <textarea type="text" name="body" placeholder="New Post Body" class="form-control new-blog-body"></textarea>
+            <input type="text" name="title" placeholder="New Post Title" input pattern=".{3,25}" required title="3min 25max" class="form-control" />
+            <textarea type="text" name="body" placeholder="New Post Body" input pattern=".{5,200}" required title="5min 200max" class="form-control new-blog-body"></textarea>
             <input type="submit" class="btn btn-primary form-control new-blog-post-submit" />
         </form>
     </section>
 
     <section class="all-posts-section">
-
+    {{#each posts}}
+        {{> post}}
+        {{/each}}
     </section>
 
 </div>

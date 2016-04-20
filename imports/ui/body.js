@@ -8,6 +8,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Posts } from '../api/posts';
 
+import './post';
 import './body.html';
 
 Template.body.onCreated(function bodyOnCreated() {
@@ -15,8 +16,24 @@ Template.body.onCreated(function bodyOnCreated() {
     Meteor.subscribe('posts');
 });
 
+//Check if the users wants to return only their posts
+//Else return all.
+//Get the total count of blog posts for the signed in user.
+//Get the total amount of posts in the whole blog.
 Template.body.helpers({
-
+    posts() {
+        const instance = Template.instance();
+        if(instance.state.get('hideOthers')) {
+            return Posts.find({ owner: { $in: [Meteor.userID()] } , sort: { createdAt: -1 }});
+        }
+        return Posts.find({}, { sort: { createdAt: -1 } });
+    },
+    userCount() {
+        return Posts.find({ owner: { $in: [Meteor.userId()] } }).count();
+    },
+    totalCount() {
+        return Posts.find({}, { sort: { createdAt: -1 } }).count();
+    }
 });
 
 Template.body.events({

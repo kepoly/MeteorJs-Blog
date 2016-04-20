@@ -70,6 +70,7 @@ body {
 .new-blog-post {
     background: #eee;
     padding: 10px;
+    margin-bottom: 25px;
 }
 
 .new-blog-post input[type="text"] {
@@ -78,4 +79,22 @@ body {
 
 .new-blog-post-submit {
     margin-top: 25px;
+}
+
+/*
+*All Posts section
+*/
+.all-posts-section {
+    background: #eee;
+}
+
+.each-post {
+    padding: 5px;
+    min-height: 100px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.each-post:nth-child(even) {
+    background: white;
 }
