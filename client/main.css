@@ -11,6 +11,8 @@ body {
     background: #eee;
 }
 
+textarea { resize:vertical ; }
+
 /*
 *
 *Class selectors

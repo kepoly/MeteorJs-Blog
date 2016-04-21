@@ -21,6 +21,7 @@ if(Meteor.isServer) {
 }
 
 Meteor.methods({
+    //retrieve the incoming data and make a new post to the collection
     'posts.insert'(title, body) {
 
         check(title, String);
@@ -40,6 +41,7 @@ Meteor.methods({
             editing: false,
         });
     },
+    //delete from the collection where the id equals the incoming postId parameter
     'posts.remove'(postId) {
 
         check(postId, String);
@@ -51,6 +53,7 @@ Meteor.methods({
         }
         Posts.remove(postId);
     },
+    //enable editing on the front end using editing field in the collection
     'posts.edit'(postId, editingNow) {
         check(postId, String);
         check(editingNow, Boolean);
@@ -62,6 +65,7 @@ Meteor.methods({
         }
         Posts.update(postId, { $set: { editing: editingNow }});
     },
+    //after editing is enabled you may update the data in the collection
     'posts.update'(postId, title, body) {
         check(postId, String);
         check(title, String);
@@ -74,6 +78,7 @@ Meteor.methods({
         }
         Posts.update(postId, { $set: { title: title, body: body, editing: false }});
     },
+    //set a post to private so only you may view it
     'posts.setPrivate'(postId, setToPrivate) {
         "use strict";
         check(postId, String);
