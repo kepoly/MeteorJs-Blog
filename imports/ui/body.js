@@ -23,8 +23,9 @@ Template.body.onCreated(function bodyOnCreated() {
 Template.body.helpers({
     posts() {
         const instance = Template.instance();
-        if(instance.state.get('hideOthers')) {
-            return Posts.find({ owner: { $in: [Meteor.userID()] } , sort: { createdAt: -1 }});
+
+        if(Session.get('showUser') != undefined && Session.get('showUser') != 'all') {
+            return Posts.find({ username: Session.get('showUser') }, { sort: { createdAt: -1 } });
         }
         return Posts.find({}, { sort: { createdAt: -1 } });
     },
@@ -35,6 +36,13 @@ Template.body.helpers({
         return Posts.find({ private: false  }, { sort: { createdAt: -1 } }).count();
     }
 });
+
+//add a helper to get the current users session name that is set
+//in the click getall event.
+Template.registerHelper('session',function(){
+    return Session.get('showUser');
+});
+
 
 Template.body.events({
     'submit .new-blog-post'(event) {
@@ -51,5 +59,17 @@ Template.body.events({
         //reset the fields after insert.
         target.title.value = '';
         target.body.value = '';
-    }
+    },
+    'click .getall'(event, instance) {
+        //get the incoming button value from the click event
+        getText = event.target.value;
+
+        //check if access is from the client and set the session value
+        if(Meteor.isClient) {
+            Session.set("showUser", getText);
+            console.log(getText);
+        } else {
+            console.log('notworking');
+        }
+    },
 });

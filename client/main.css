@@ -80,6 +80,11 @@ body {
 *New Blog Post Section
 */
 
+.getall {
+    display: block;
+    margin: 0 auto 25px auto;
+}
+
 .new-blog-post {
     background: #eee;
     padding: 10px;
@@ -121,10 +126,9 @@ body {
 }
 
 .delete, .toggle-edit, .toggle-private {
-    margin: 0 5px 0 5px;
+    margin: 0 15px 0 15px;
 }
 
 .delete:hover, .toggle-edit:hover, .toggle-private:hover {
     cursor: pointer;
-
 }
