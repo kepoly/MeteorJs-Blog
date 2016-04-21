@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="62e7d226-049f-44db-a722-1736ac259909" name="Default" comment="">
+    <list default="true" id="62e7d226-049f-44db-a722-1736ac259909" name="Default" comment="More reasonable lengths in html validation for title and body.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/api/posts.js" afterPath="$PROJECT_DIR$/imports/api/posts.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/body.html" afterPath="$PROJECT_DIR$/imports/ui/body.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/body.js" afterPath="$PROJECT_DIR$/imports/ui/body.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/post.js" afterPath="$PROJECT_DIR$/imports/ui/post.js" />
     </list>
     <ignored path="meteor-blog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +28,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="body.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="body.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imports/ui/body.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4597902">
-              <caret line="22" column="94" selection-start-line="22" selection-start-column="94" selection-end-line="22" selection-end-column="94" />
+            <state vertical-scroll-proportion="-9.827586">
+              <caret line="23" column="91" selection-start-line="23" selection-start-column="91" selection-end-line="23" selection-end-column="91" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="body.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/body.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="posts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/api/posts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/imports/ui/post.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.62229615">
+              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -55,12 +88,12 @@
         <option value="$PROJECT_DIR$/imports/startup/accounts-config.js" />
         <option value="$PROJECT_DIR$/client/main.js" />
         <option value="$PROJECT_DIR$/server/main.js" />
-        <option value="$PROJECT_DIR$/imports/ui/body.js" />
-        <option value="$PROJECT_DIR$/imports/ui/post.js" />
         <option value="$PROJECT_DIR$/imports/ui/post.html" />
         <option value="$PROJECT_DIR$/client/main.css" />
-        <option value="$PROJECT_DIR$/imports/api/posts.js" />
         <option value="$PROJECT_DIR$/imports/ui/body.html" />
+        <option value="$PROJECT_DIR$/imports/ui/body.js" />
+        <option value="$PROJECT_DIR$/imports/api/posts.js" />
+        <option value="$PROJECT_DIR$/imports/ui/post.js" />
       </list>
     </option>
   </component>
@@ -154,6 +187,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="imports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="meteor-blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="meteor-blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -305,7 +356,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461201472697</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="More reasonable lengths in html validation for title and body.">
+      <created>1461205315763</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1461205315763</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -353,7 +410,8 @@
     <MESSAGE value="CUD now working, as well posts can be set to private or public." />
     <MESSAGE value="Cleaned up some things and added ability to view only a single users post or view all posts. More mobile friendly now as well." />
     <MESSAGE value="END OF WORK" />
-    <option name="LAST_COMMIT_MESSAGE" value="END OF WORK" />
+    <MESSAGE value="More reasonable lengths in html validation for title and body." />
+    <option name="LAST_COMMIT_MESSAGE" value="More reasonable lengths in html validation for title and body." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -408,22 +466,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/post.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.87853575">
-          <caret line="26" column="83" selection-start-line="26" selection-start-column="83" selection-end-line="26" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/body.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48752078">
-          <caret line="66" column="29" selection-start-line="66" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.07692308">
@@ -456,18 +498,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/api/posts.js">
+    <entry file="file://$PROJECT_DIR$/imports/ui/body.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34109816">
-          <caret line="80" column="51" selection-start-line="80" selection-start-column="51" selection-end-line="80" selection-end-column="51" />
+        <state vertical-scroll-proportion="-9.827586">
+          <caret line="23" column="91" selection-start-line="23" selection-start-column="91" selection-end-line="23" selection-end-column="91" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/body.html">
+    <entry file="file://$PROJECT_DIR$/imports/ui/body.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4597902">
-          <caret line="22" column="94" selection-start-line="22" selection-start-column="94" selection-end-line="22" selection-end-column="94" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/api/posts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/post.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.62229615">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
           <folding />
         </state>
       </provider>

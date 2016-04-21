@@ -22,10 +22,11 @@ if(Meteor.isServer) {
 
 Meteor.methods({
     //retrieve the incoming data and make a new post to the collection
-    'posts.insert'(title, body) {
+    'posts.insert'(title, body, isPrivate) {
 
         check(title, String);
         check(body, String);
+        check(isPrivate, Boolean);
 
         if(! Meteor.userId()) {
              throw new Meteor.Error('insert-access-not-authorized');
@@ -37,7 +38,7 @@ Meteor.methods({
             createdAt: new Date(),
             owner: Meteor.userId(),
             username: Meteor.user().username,
-            private: false,
+            private: isPrivate,
             editing: false,
         });
     },
@@ -49,7 +50,7 @@ Meteor.methods({
         const post = Posts.findOne(postId);
 
         if(post.private && post.owner !== Meteor.userId()) {
-            throw new Meteor.Error('delete-access-not-authorized')
+            throw new Meteor.Error('delete-access-not-authorized');
         }
         Posts.remove(postId);
     },

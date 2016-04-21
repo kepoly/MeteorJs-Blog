@@ -53,8 +53,9 @@ Template.body.events({
         const title = target.title.value;
         const body = target.body.value;
 
+        const isPrivate = target.isPrivate.checked;
         //call the method insert with title and body as params.
-        Meteor.call('posts.insert', title, body);
+        Meteor.call('posts.insert', title, body, isPrivate);
 
         //reset the fields after insert.
         target.title.value = '';

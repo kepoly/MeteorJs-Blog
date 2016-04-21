@@ -10,7 +10,7 @@ import './post.html';
 Template.post.helpers( {
     isOwner() {
         return this.owner === Meteor.userId();
-    }
+    },
 });
 
 Template.post.events({
