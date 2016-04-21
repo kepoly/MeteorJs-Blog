@@ -16,7 +16,7 @@ Template.body.onCreated(function bodyOnCreated() {
     Meteor.subscribe('posts');
 });
 
-//Check if the users wants to return only their posts
+//Check if the user wants to return a specific users posts.
 //Else return all.
 //Get the total count of blog posts for the signed in user.
 //Get the total amount of posts in the whole blog.
