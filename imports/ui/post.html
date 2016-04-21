@@ -25,7 +25,7 @@
     <!-- User options only shown if own the post. -->
     <div class="user-options {{#if private}}{{#unless isOwner}}private{{/unless}}{{/if}}">
         {{#if isOwner}}
-            <span class="glyphicon glyphicon-remove toggle-edit delete" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-remove delete" aria-hidden="true"></span>
             {{#if editing}}
                 <span class="glyphicon glyphicon-floppy-remove toggle-edit" aria-hidden="true"></span>
             {{else}}

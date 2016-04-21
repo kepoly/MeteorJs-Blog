@@ -7,7 +7,7 @@ import { Posts } from '../api/posts.js';
 
 import './post.html';
 
-Template.post.helpers( {
+Template.post.helpers({
     isOwner() {
         return this.owner === Meteor.userId();
     },
