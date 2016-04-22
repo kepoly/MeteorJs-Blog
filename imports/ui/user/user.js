@@ -31,7 +31,7 @@ Template.user.helpers({
         return Template.instance().data;
     },
     userposts() {
-        return Posts.find({ username: { $in: [Template.instance().data] } });
+        return Posts.find({ username: { $in: [Template.instance().data] } }, { sort: { createdAt: -1 }  });
     }
 
 });

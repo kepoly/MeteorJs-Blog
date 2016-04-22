@@ -1,5 +1,14 @@
 <template name="home">
     <div class="container">
+
+
+        <div class="stats">
+            {{#if currentUser}}
+                <span>My Total Posts: {{userCount}} - </span>
+            {{/if}}
+            <span>Total Posts on Meteor Blog: {{totalCount}}</span>
+        </div>
+
         {{#if currentUser}}
             <section class="new-post-section">
                 <h3 class="text-center">Submit a new Blog Post</h3>
@@ -15,11 +24,22 @@
 
         <button class="getall text-center btn btn-primary" value="all">View All</button>
 
+        <div class="search-posts" id="search-posts">
+            {{> EasySearch.Input index=postsIndex}}
+            <div class="autosuggest-component">
+                {{> EasySearch.Autosuggest index=postsIndex}}
+            </div>
+        </div>
+
+
         <section class="all-posts-section">
-            {{#each posts}}
+            {{#EasySearch.Each index=postsIndex }}
                 {{> post}}
-            {{/each}}
+{{/EasySearch.Each}}
         </section>
+
+
+
 
     </div>
 

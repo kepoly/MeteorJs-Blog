@@ -5,20 +5,18 @@ import '../imports/ui/loading.html';
 import '../imports/ui/headfoot.html';
 
 
+
 Router.configure({
     layoutTemplate: 'headfoot',
     loadingTemplate: 'loading'
 });
 
-Router.route('/',function() {
-    this.render('home'), {
-
-    }
+Router.route('/', {
+    template: 'home',
 });
 
 Router.route('/u/:username', {
     template: 'user',
-    subscribe: 'posts',
     data: function() {
         userdata: {
             var currentUser = this.params.username;
@@ -27,6 +25,13 @@ Router.route('/u/:username', {
 
     }
 });
+
+Router.route('p/:postname'), {
+    template: 'loading',
+    data: function() {
+
+    }
+}
 
 Router.route('/c/:category', function () {
     var id = this.params.category;

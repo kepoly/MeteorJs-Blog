@@ -21,10 +21,19 @@ Template.home.onCreated(function bodyOnCreated() {
 //Else return all.
 //Get the total count of blog posts for the signed in user.
 //Get the total amount of posts in the whole blog.
+
+
+PostsIndex = new EasySearch.Index({
+    collection: Posts,
+    fields: ['title', 'body', 'username', 'createdAt'],
+    engine: new EasySearch.Minimongo()
+});
+
+
 Template.home.helpers({
+    postsIndex: () => PostsIndex,
     posts() {
         const instance = Template.instance();
-
         if(Session.get('showUser') != undefined && Session.get('showUser') != 'all') {
             return Posts.find({ username: Session.get('showUser') }, { sort: { createdAt: -1 } });
         }
