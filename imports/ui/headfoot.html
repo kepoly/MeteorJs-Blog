@@ -1,6 +1,18 @@
 <template name="headfoot">
 
-    <a href="/">Meteor Home</a>
+    <header class="main-header">
+        <h1 class="logo-text"><a href="/">Meteor Blog</a></h1>
+    </header>
+
+    <section class="user-account-section">
+        {{> loginButtons}}
+        <div class="stats">
+            {{#if currentUser}}
+                <span>My Total Posts: {{userCount}} - </span>
+            {{/if}}
+            <span>Total Posts on Meteor Blog: {{totalCount}}</span>
+        </div>
+    </section>
 
     {{> yield}}
 

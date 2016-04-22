@@ -1,18 +1,5 @@
 <template name="home">
     <div class="container">
-        <header class="main-header">
-            <h1 class="logo-text">Meteor Blog</h1>
-        </header>
-
-        <section class="user-account-section">
-            {{> loginButtons}}
-            <div class="stats">
-                {{#if currentUser}}
-                    <span>My Total Posts: {{userCount}} - </span>
-                {{/if}}
-                <span>Total Posts on Meteor Blog: {{totalCount}}</span>
-            </div>
-        </section>
         {{#if currentUser}}
             <section class="new-post-section">
                 <h3 class="text-center">Submit a new Blog Post</h3>

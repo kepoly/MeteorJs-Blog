@@ -6,7 +6,8 @@ import '../imports/ui/headfoot.html';
 
 
 Router.configure({
-    layoutTemplate: 'headfoot'
+    layoutTemplate: 'headfoot',
+    loadingTemplate: 'loading'
 });
 
 Router.route('/',function() {
