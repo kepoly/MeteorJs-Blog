@@ -8,10 +8,11 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Posts } from '../api/posts';
 
-import './post';
+import './post/post';
 import './body.html';
 
-Template.body.onCreated(function bodyOnCreated() {
+
+Template.home.onCreated(function bodyOnCreated() {
     this.state = new ReactiveDict();
     Meteor.subscribe('posts');
 });
@@ -20,7 +21,7 @@ Template.body.onCreated(function bodyOnCreated() {
 //Else return all.
 //Get the total count of blog posts for the signed in user.
 //Get the total amount of posts in the whole blog.
-Template.body.helpers({
+Template.home.helpers({
     posts() {
         const instance = Template.instance();
 
@@ -44,7 +45,7 @@ Template.registerHelper('session',function(){
 });
 
 
-Template.body.events({
+Template.home.events({
     'submit .new-blog-post'(event) {
         event.preventDefault();
 

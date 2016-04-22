@@ -1,44 +1,45 @@
-<body>
+<template name="home">
+    <div class="container">
+        <header class="main-header">
+            <h1 class="logo-text">Meteor Blog</h1>
+        </header>
 
-<div class="container">
-    <header class="main-header">
-        <h1 class="logo-text">Meteor Blog</h1>
-    </header>
-
-    <section class="user-account-section">
-        {{> loginButtons}}
-        <div class="stats">
-{{#if currentUser}}
-           <span>My Total Posts: {{userCount}} - </span>
-    {{/if}}
-            <span>Total Posts on Meteor Blog: {{totalCount}}</span>
-        </div>
-    </section>
-{{#if currentUser}}
-    <section class="new-post-section">
-        <h3 class="text-center">Submit a new Blog Post</h3>
-        <!-- Insert new blog post form if user is logged in. -->
-        <form class="new-blog-post">
-            <input type="text" name="title" placeholder="New Post Title" input pattern=".{3,50}" required title="3min 50max" class="form-control" />
-            <textarea type="text" name="body" placeholder="New Post Body" input pattern=".{5,300}" required title="5min 300max" class="form-control new-blog-body"></textarea>
-            <label>Post as Private - <input type="checkbox" checked="true" name="isPrivate" /></label>
-            <input type="submit" class="btn btn-primary form-control new-blog-post-submit" />
-        </form>
-    </section>
-{{/if}}
+        <section class="user-account-section">
+            {{> loginButtons}}
+            <div class="stats">
+                {{#if currentUser}}
+                    <span>My Total Posts: {{userCount}} - </span>
+                {{/if}}
+                <span>Total Posts on Meteor Blog: {{totalCount}}</span>
+            </div>
+        </section>
+        {{#if currentUser}}
+            <section class="new-post-section">
+                <h3 class="text-center">Submit a new Blog Post</h3>
+                <!-- Insert new blog post form if user is logged in. -->
+                <form class="new-blog-post">
+                    <input type="text" name="title" placeholder="New Post Title" input pattern=".{3,50}" required title="3min 50max" class="form-control" />
+                    <textarea type="text" name="body" placeholder="New Post Body" input pattern=".{5,300}" required title="5min 300max" class="form-control new-blog-body"></textarea>
+                    <label>Post as Private - <input type="checkbox" checked="true" name="isPrivate" /></label>
+                    <input type="submit" class="btn btn-primary form-control new-blog-post-submit" />
+                </form>
+            </section>
+        {{/if}}
 
         <button class="getall text-center btn btn-primary" value="all">View All</button>
 
-    <section class="all-posts-section">
-    {{#each posts}}
-        {{> post}}
-        {{/each}}
-    </section>
+        <section class="all-posts-section">
+            {{#each posts}}
+                {{> post}}
+            {{/each}}
+        </section>
 
-</div>
+    </div>
 
-<footer class="main-footer">
-    <p class="text-center">Created by: Matthew Spada @Kepoly</p>
-</footer>
+    <footer class="main-footer">
+        <p class="text-center">Created by: Matthew Spada @Kepoly</p>
+    </footer>
+</template>
 
-</body>
+
+
