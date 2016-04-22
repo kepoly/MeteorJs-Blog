@@ -2,6 +2,12 @@ import '../imports/startup/accounts-config.js';
 import '../imports/ui/body.js';
 import '../imports/ui/user/user'
 import '../imports/ui/loading.html';
+import '../imports/ui/headfoot.html';
+
+
+Router.configure({
+    layoutTemplate: 'headfoot'
+});
 
 Router.route('/',function() {
     this.render('home'), {
