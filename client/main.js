@@ -1,5 +1,6 @@
 import '../imports/startup/accounts-config.js';
 import '../imports/ui/body.js';
+import '../imports/ui/user/user'
 import '../imports/ui/loading.html';
 
 Router.route('/',function() {
@@ -8,10 +9,16 @@ Router.route('/',function() {
     }
 });
 
-Router.route('/u/:username', function () {
-    var id = this.params.username;
-    console.log(id);
-    this.render('loading');
+Router.route('/u/:username', {
+    template: 'user',
+    subscribe: 'posts',
+    data: function() {
+        userdata: {
+            var currentUser = this.params.username;
+            return currentUser;
+        }
+
+    }
 });
 
 Router.route('/c/:category', function () {

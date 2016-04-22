@@ -9,7 +9,14 @@ import { check } from 'meteor/check';
 //create a new mongo collection to hold the blog posts
 
 if(Meteor.isServer) {
-
+    Meteor.publish('users', function postsPublication() {
+        return Users.find({
+            $or: [
+                { private: { $ne: true } },
+                { owner: this.userId },
+            ],
+        });
+    });
 }
 
 Meteor.methods({
