@@ -92,6 +92,8 @@ sacha:spin@2.3.1
 service-configuration@1.0.8
 session@1.1.4
 sha@1.0.6
+simple:json-routes@2.1.0
+simple:rest@1.1.1
 spacebars@1.0.10
 spacebars-compiler@1.0.10
 srp@1.0.7
