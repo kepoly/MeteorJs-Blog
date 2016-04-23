@@ -28,9 +28,7 @@ textarea { resize:vertical ; }
     padding-bottom: 25px;
 }
 
-.private {
-    display: none;
-}
+
 
 /*
 *Header Section
@@ -147,9 +145,12 @@ textarea { resize:vertical ; }
 
 .user-options {
     text-align: center;
-    padding: 5px 5px 20px 5px;
     font-size: 16px;
     border-bottom: 1px solid dodgerblue;
+}
+
+.user-options span {
+    padding: 5px 15px 15px 0;
 }
 
 .delete, .toggle-edit, .toggle-private {
@@ -158,4 +159,39 @@ textarea { resize:vertical ; }
 
 .delete:hover, .toggle-edit:hover, .toggle-private:hover {
     cursor: pointer;
+}
+
+/*
+*Single Post Page
+*/
+
+.each-comment {
+    position: relative;
+    padding: 5px;
+    min-height: 50px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.single-comment-text {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.single-comment-time {
+    position: absolute;
+    font-size: 10px;
+    top: 0;
+    left: 0;
+}
+
+.single-comment-author {
+
+}
+.private {
+    visibility: hidden;
+    display: none;
+    padding: 0!important;
+    margin: 0!important;
+    clear: both;
 }

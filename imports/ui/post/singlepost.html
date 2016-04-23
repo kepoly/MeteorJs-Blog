@@ -6,20 +6,22 @@
         {{/each}}
     </section>
     <section class="single-post-comments">
-
+{{#if currentUser}}
+    <h2>Submit a new Comment</h2>
         <form class="new-comment-post">
-            <textarea type="text" name="body" placeholder="New Post Body" input pattern=".{5,300}" required title="5min 300max" class="form-control new-blog-body"></textarea>
+            <textarea type="text" name="body" placeholder="New Comment Body" input pattern=".{5,300}" required title="5min 300max" class="form-control new-comment-body"></textarea>
             <label>Post as Private - <input type="checkbox" checked="true" name="isPrivate" /></label>
             <input type="hidden" name="postId" value="{{singlepostid._id}}" />
             <input type="submit" class="btn btn-primary form-control new-comment-post-submit" />
         </form>
+{{/if}}
 
-    </section>
+        <h2 class="comment-header">Comments</h2>
 
-    {{#each comments}}
-        {{> comment}}
+        {{#each comments}}
+            {{> comment}}
         {{/each}}
-
+    </section>
 </div>
 
 </template>
@@ -28,37 +30,41 @@
     <!-- Check if editing and the owner is logged in -->
     {{#if editing}}
         {{#if isOwner}}
-            <div class="each-post">
+            <div class="each-comment">
                 <h3>Editing...</h3>
                 <form class="update-comment">
-                    <textarea type="text" name="body" placeholder="New Post Body" input pattern=".{5,200}" required title="5min 200max" class="form-control new-blog-body" value="{{body}}"></textarea>
+                    <textarea type="text" name="body" placeholder="New Comment Body" input pattern=".{5,200}" required title="5min 200max" class="form-control new-blog-body" value="{{body}}"></textarea>
                     <input type="submit" class="btn btn-primary form-control new-blog-comment-submit" />
                 </form>
             </div>
         {{/if}}
     {{else}}
         <!-- Show the content of the post if not editing -->
-        <div class="each-post {{#if private}}{{#unless isOwner}}private{{/unless}}{{/if}}">
+        <div class="each-comment {{#if private}}{{#unless isOwner}}private{{/unless}}{{/if}}">
             <div class="blog-content">
-                <p class="single-post-text">{{body}}</p>
-                <p class="single-post-time">{{createdAt}} - <a href="/u/{{username}}">Author</a> - <button class="single-post-creator hide-others" value="{{username}}">{{username}}</button> </p>
+                <p class="single-comment-text">{{body}}</p>
+                <p class="single-comment-time">{{createdAt}}</p>
+                <p class="single-comment-author"><a href="/u/{{username}}">{{username}}</a> </p>
             </div>
         </div>
     {{/if}}
     <!-- User options only shown if own the post. -->
-    <div class="user-options {{#if private}}{{#unless isOwner}}private{{/unless}}{{/if}}">
-        {{#if isOwner}}
-            <span class="glyphicon glyphicon-remove delete" aria-hidden="true"></span>
-            {{#if editing}}
-                <span class="glyphicon glyphicon-floppy-remove toggle-edit" aria-hidden="true"></span>
-            {{else}}
-                <span class="glyphicon glyphicon-scissors toggle-edit" aria-hidden="true"></span>
+    <div class="{{#if private}}{{#unless isOwner}}private{{/unless}}{{/if}}">
+        <div class="user-options">
+            {{#if isOwner}}
+                <span class="glyphicon glyphicon-remove delete" aria-hidden="true"></span>
+                {{#if editing}}
+                    <span class="glyphicon glyphicon-floppy-remove toggle-edit" aria-hidden="true"></span>
+                {{else}}
+                    <span class="glyphicon glyphicon-scissors toggle-edit" aria-hidden="true"></span>
+                {{/if}}
+                {{#if private}}
+                    <span class="glyphicon glyphicon-eye-close toggle-private" aria-hidden="true"></span>
+                {{else}}
+                    <span class="glyphicon glyphicon-eye-open toggle-private" aria-hidden="true"></span>
+                {{/if}}
             {{/if}}
-            {{#if private}}
-                <span class="glyphicon glyphicon-eye-close toggle-private" aria-hidden="true"></span>
-            {{else}}
-                <span class="glyphicon glyphicon-eye-open toggle-private" aria-hidden="true"></span>
-            {{/if}}
-        {{/if}}
+        </div>
+
     </div>
 </template>
