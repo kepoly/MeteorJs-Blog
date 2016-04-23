@@ -1,8 +1,64 @@
 <template name="singlepost">
+<div class="container">
+    <section class="all-posts-section">
+        {{#each posts }}
+            {{> post}}
+        {{/each}}
+    </section>
+    <section class="single-post-comments">
 
+        <form class="new-comment-post">
+            <textarea type="text" name="body" placeholder="New Post Body" input pattern=".{5,300}" required title="5min 300max" class="form-control new-blog-body"></textarea>
+            <label>Post as Private - <input type="checkbox" checked="true" name="isPrivate" /></label>
+            <input type="hidden" name="postId" value="{{singlepostid._id}}" />
+            <input type="submit" class="btn btn-primary form-control new-comment-post-submit" />
+        </form>
 
-    {{#each posts }}
-        {{> post}}
-    {{/each}}
+    </section>
 
+    {{#each comments}}
+        {{> comment}}
+        {{/each}}
+
+</div>
+
+</template>
+
+<template name="comment">
+    <!-- Check if editing and the owner is logged in -->
+    {{#if editing}}
+        {{#if isOwner}}
+            <div class="each-post">
+                <h3>Editing...</h3>
+                <form class="update-comment">
+                    <textarea type="text" name="body" placeholder="New Post Body" input pattern=".{5,200}" required title="5min 200max" class="form-control new-blog-body" value="{{body}}"></textarea>
+                    <input type="submit" class="btn btn-primary form-control new-blog-comment-submit" />
+                </form>
+            </div>
+        {{/if}}
+    {{else}}
+        <!-- Show the content of the post if not editing -->
+        <div class="each-post {{#if private}}{{#unless isOwner}}private{{/unless}}{{/if}}">
+            <div class="blog-content">
+                <p class="single-post-text">{{body}}</p>
+                <p class="single-post-time">{{createdAt}} - <a href="/u/{{username}}">Author</a> - <button class="single-post-creator hide-others" value="{{username}}">{{username}}</button> </p>
+            </div>
+        </div>
+    {{/if}}
+    <!-- User options only shown if own the post. -->
+    <div class="user-options {{#if private}}{{#unless isOwner}}private{{/unless}}{{/if}}">
+        {{#if isOwner}}
+            <span class="glyphicon glyphicon-remove delete" aria-hidden="true"></span>
+            {{#if editing}}
+                <span class="glyphicon glyphicon-floppy-remove toggle-edit" aria-hidden="true"></span>
+            {{else}}
+                <span class="glyphicon glyphicon-scissors toggle-edit" aria-hidden="true"></span>
+            {{/if}}
+            {{#if private}}
+                <span class="glyphicon glyphicon-eye-close toggle-private" aria-hidden="true"></span>
+            {{else}}
+                <span class="glyphicon glyphicon-eye-open toggle-private" aria-hidden="true"></span>
+            {{/if}}
+        {{/if}}
+    </div>
 </template>

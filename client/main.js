@@ -27,12 +27,14 @@ Router.route('/u/:username', {
     }
 });
 
-Router.route('/p/:postname', {
+Router.route('/p/:postname/:username', {
     template: 'singlepost',
     data: function() {
         postdata: {
             var currentPost = this.params.postname;
-            return currentPost;
+            var currentUser = this.params.username;
+            var retVal = {'postTitle': currentPost, 'userName': currentUser};
+            return retVal;
         }
     }
 });

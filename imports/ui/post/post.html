@@ -16,7 +16,7 @@
         <!-- Show the content of the post if not editing -->
     <div class="each-post {{#if private}}{{#unless isOwner}}private{{/unless}}{{/if}}">
             <div class="blog-content">
-                <h3 class="single-post-title"><a href="/p/{{title}}">{{title}}</a></h3>
+                <h3 class="single-post-title"><a href="/p/{{title}}/{{username}}">{{title}}</a></h3>
                 <p class="single-post-text">{{body}}</p>
                 <p class="single-post-time">{{createdAt}} - <a href="/u/{{username}}">Author</a> - <button class="single-post-creator hide-others" value="{{username}}">{{username}}</button> </p>
             </div>
