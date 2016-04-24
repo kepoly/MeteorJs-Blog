@@ -1,5 +1,6 @@
 /* CSS declarations go here */
 @import url(https://fonts.googleapis.com/css?family=Cabin);
+@import url(https://fonts.googleapis.com/css?family=Oswald);
 
 /*
 *
@@ -7,7 +8,7 @@
 *
 */
 body {
-    font-family: 'Cabin', sans-serif;
+    font-family: 'Oswald', 'Cabin', sans-serif;
     background: #eee;
 }
 
@@ -23,20 +24,21 @@ textarea { resize:vertical ; }
 }
 
 .container {
-    border-top: 2px solid dodgerblue;
     background: white;
     padding-bottom: 25px;
 }
 
-
-
 /*
 *Header Section
 */
+
+.headfootcont {
+    background: dodgerblue;
+}
+
 .main-header {
-    padding: 15px;
     position: relative;
-    height: 100px;
+    height: 75px;
 }
 
 .logo-text {
@@ -46,6 +48,42 @@ textarea { resize:vertical ; }
     top: 25px;
     margin-top: 0;
 }
+
+.logo-text a {
+    color: white;
+}
+
+.logo-text a:hover {
+    color: #eee;
+    text-decoration: none;
+}
+
+.header-button-section {
+    position: absolute;
+    width: 230px;
+    left:0;
+    right:0;
+    top: 30px;
+    margin: 0 auto;
+}
+
+.header-button-section button {
+    font-size: 36px;
+    margin-right: 10px;
+    color: white;
+    background: transparent;
+    border: none;
+}
+
+.header-button-section button:nth-last-child(1) {
+    margin-right: 0;
+}
+
+.header-button-section button:hover {
+    color: #eee;
+    cursor: pointer;
+}
+
 /*
 *Footer Section
 */
@@ -63,9 +101,17 @@ textarea { resize:vertical ; }
 
 }
 
+#login-buttons a, .accounts-dialog a {
+    text-decoration: none;
+}
+
 .login-link-text {
     font-size: 32px;
+    color: white;
+}
 
+.login-link-text:hover {
+    color: #eee;
 }
 
 #login-dropdown-list {
@@ -96,13 +142,17 @@ textarea { resize:vertical ; }
     margin: 0 auto 25px auto;
 }
 
-.new-blog-post {
+.new-blog-post, .new-blog-category {
     background: #eee;
     padding: 10px;
     margin-bottom: 25px;
 }
 
-.new-blog-post input[type="text"] {
+.new-blog-post input[type="text"], select {
+    margin: 5px 0;
+}
+
+.new-blog-category input[type="text"], select {
     margin: 5px 0;
 }
 

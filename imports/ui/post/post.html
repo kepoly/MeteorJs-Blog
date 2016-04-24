@@ -18,10 +18,11 @@
             <div class="blog-content">
                 <h3 class="single-post-title"><a href="/p/{{title}}/{{username}}">{{title}}</a></h3>
                 <p class="single-post-text">{{body}}</p>
-                <p class="single-post-time">{{FormatDate createdAt}} ago - by <a href="/u/{{username}}">{{username}}</a></p>
+                <p class="single-post-time">{{FormatDate createdAt}} ago - in <a href="c/{{categoryname}}">{{categoryname}}</a> - by <a href="/u/{{username}}">{{username}}</a></p>
             </div>
     </div>
     {{/if}}
+
     <!-- User options only shown if own the post. -->
     <div class="user-options {{#if private}}{{#unless isOwner}}private{{/unless}}{{/if}}">
         {{#if isOwner}}

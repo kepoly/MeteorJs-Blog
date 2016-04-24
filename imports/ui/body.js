@@ -7,14 +7,27 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Posts } from '../api/posts';
+import { Categories } from '../api/categories';
 
 import './post/post';
 import './body.html';
+import './headfoot.html';
 
 
 Template.home.onCreated(function bodyOnCreated() {
     this.state = new ReactiveDict();
     Meteor.subscribe('posts');
+    Meteor.subscribe('categories');
+});
+
+Template.headfoot.onCreated(function headFootOnCreated() {
+   this.state = new ReactiveDict();
+
+    if(Session.get('hidePost') === undefined) {
+        Session.set('hidePost', 'true');
+    } else {
+        Session.set('hidePost', Session.get('hidePost'));
+    }
 });
 
 //Check if the user wants to return a specific users posts.
@@ -45,10 +58,16 @@ Template.home.helpers({
     totalCount() {
         return Posts.find({ private: false  }, { sort: { createdAt: -1 } }).count();
     },
+    categories() {
+        return Categories.find({ private: false }, { sort: { title: 1 }});
+    },
     attributes() {
         return { name: 'postsSearch',
             placeholder: "Search by Title, Author or Key Terms"
         };
+    },
+    returnHidePost() {
+        return Session.get('hidePost');
     }
 });
 
@@ -56,6 +75,18 @@ Template.home.helpers({
 //in the click getall event.
 Template.registerHelper('session',function(){
     return Session.get('showUser');
+});
+
+Template.registerHelper('showHidePost', function() {
+    return Session.get('hidePost');
+})
+
+Template.headfoot.events({
+    'click .toggle-new-post'(event) {
+
+        Session.set('hidePost', !Session.get('hidePost'));
+
+    }
 });
 
 
@@ -67,10 +98,32 @@ Template.home.events({
         const target = event.target;
         const title = target.title.value;
         const body = target.body.value;
+        const category = target.category.value;
+
+        //because we want to include the category name without another db call.
+        var split = category.split('+', 2);
+        var catid = split[0];
+        var catname = split[1];
 
         const isPrivate = target.isPrivate.checked;
         //call the method insert with title and body as params.
-        Meteor.call('posts.insert', title, body, isPrivate);
+        Meteor.call('posts.insert', title, body, catid, catname, isPrivate);
+
+        //reset the fields after insert.
+        target.title.value = '';
+        target.body.value = '';
+    },
+    'submit .new-blog-category'(event) {
+        event.preventDefault();
+
+        //retrieve the values from form event.
+        const target = event.target;
+        const title = target.title.value;
+        const body = target.body.value;
+
+        const isPrivate = target.isPrivate.checked;
+        //call the method insert with title and body as params.
+        Meteor.call('categories.insert', title, body, isPrivate);
 
         //reset the fields after insert.
         target.title.value = '';
@@ -86,16 +139,6 @@ Template.home.events({
             console.log(getText);
         } else {
             console.log('notworking');
-        }
-    },
-    'click .toggle-new-post'(event) {
-
-        if(event.target.value == 'false') {
-            $(".toggle-new-post").val(true);
-            $(".new-post-section").css('display', 'none');
-        } else {
-            $(".toggle-new-post").val(false);
-            $(".new-post-section").css('display', 'block');
         }
     }
 });
