@@ -1,0 +1,14 @@
+<template name="category">
+
+    <div class="container">
+
+        <h1>Username: {{categorydata}} </h1>
+
+        {{#each categoryposts}}
+            {{> post}}
+        {{/each}}
+
+
+    </div>
+
+</template>

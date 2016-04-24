@@ -59,9 +59,6 @@ Template.home.helpers({
     totalCount() {
         return Posts.find({ private: false  }, { sort: { createdAt: -1 } }).count();
     },
-    categories() {
-        return Categories.find({ private: false }, { sort: { title: 1 }});
-    },
     attributes() {
         return { name: 'postsSearch',
             placeholder: "Search by Title, Author or Key Terms"
@@ -85,19 +82,13 @@ Template.registerHelper('showHidePost', function() {
 Template.headfoot.helpers({
     returnHidePost() {
         return Session.get('hidePost');
+    },
+    categories() {
+        return Categories.find({ private: false }, { sort: { title: 1 }});
     }
 });
 
 Template.headfoot.events({
-    'click .toggle-new-post'(event) {
-
-        Session.set('hidePost', !Session.get('hidePost'));
-
-    }
-});
-
-
-Template.home.events({
     'submit .new-blog-post'(event) {
         event.preventDefault();
 
@@ -136,6 +127,13 @@ Template.home.events({
         target.title.value = '';
         target.body.value = '';
     },
+    'click .toggle-new-post'(event) {
+        Session.set('hidePost', !Session.get('hidePost'));
+    }
+});
+
+
+Template.home.events({
     'click .getall'(event, instance) {
         //get the incoming button value from the click event
         getText = event.target.value;

@@ -25,6 +25,37 @@
         </div>
 
     </header>
+    {{#if currentUser}}
+        {{#unless returnHidePost}}
+            <div class="outer-new-post">
+                <section class="new-post-section">
+                    <h3 class="text-center">Submit a new Post </h3>
+                    <!-- Insert new blog post form if user is logged in. -->
+                    <form class="new-blog-post">
+                        <input type="text" name="title" placeholder="New Post Title" input pattern=".{3,50}" required title="3min 50max" class="form-control" />
+                        <textarea type="text" name="body" placeholder="New Post Body" input pattern=".{5,300}" required title="5min 300max" class="form-control new-blog-body"></textarea>
+                        <select name="category" class="form-control" required>
+                            {{#each categories}}
+                                <option value="{{_id}}+{{title}}">{{title}}</option>
+                            {{/each}}
+                        </select>
+                        <label>Post as Private - <input type="checkbox" checked="true" name="isPrivate" /></label>
+                        <input type="submit" class="btn btn-primary form-control new-blog-post-submit" />
+                    </form>
+                </section>
+                <section class="new-category-section">
+                    <h3 class="text-center">Submit a new Category </h3>
+                    <!-- Insert new blog post form if user is logged in. -->
+                    <form class="new-blog-category">
+                        <input type="text" name="title" placeholder="New Category Title" input pattern=".{3,50}" required title="3min 50max" class="form-control" />
+                        <textarea type="text" name="body" placeholder="New Category Body" input pattern=".{5,300}" required title="5min 300max" class="form-control new-blog-body"></textarea>
+                        <label>Category as Private - <input type="checkbox" checked="true" name="isPrivate" /></label>
+                        <input type="submit" class="btn btn-primary form-control new-blog-post-submit" />
+                    </form>
+                </section>
+            </div>
+        {{/unless}}
+    {{/if}}
 </div>
     {{> yield}}
 </template>
