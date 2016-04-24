@@ -23,6 +23,7 @@ Template.home.onCreated(function bodyOnCreated() {
 Template.headfoot.onCreated(function headFootOnCreated() {
    this.state = new ReactiveDict();
 
+    //maybe localstorage is better here?
     if(Session.get('hidePost') === undefined) {
         Session.set('hidePost', 'true');
     } else {
@@ -79,7 +80,13 @@ Template.registerHelper('session',function(){
 
 Template.registerHelper('showHidePost', function() {
     return Session.get('hidePost');
-})
+});
+
+Template.headfoot.helpers({
+    returnHidePost() {
+        return Session.get('hidePost');
+    }
+});
 
 Template.headfoot.events({
     'click .toggle-new-post'(event) {

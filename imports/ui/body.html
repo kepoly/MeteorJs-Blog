@@ -6,14 +6,14 @@
             {{#if currentUser}}
                 <span>My Total Posts: {{userCount}} - </span>
             {{/if}}
-            <span>Total Posts on Meteor Blog: {{totalCount}}</span>
+            <span>Total Posts: {{totalCount}}</span>
         </div>
 
         {{#if currentUser}}
             {{#unless returnHidePost}}
             <div class="outer-new-post">
                 <section class="new-post-section">
-                    <h3 class="text-center">Submit a new Blog Post </h3>
+                    <h3 class="text-center">Submit a new Post </h3>
                     <!-- Insert new blog post form if user is logged in. -->
                     <form class="new-blog-post">
                         <input type="text" name="title" placeholder="New Post Title" input pattern=".{3,50}" required title="3min 50max" class="form-control" />
@@ -28,7 +28,7 @@
                     </form>
                 </section>
                 <section class="new-category-section">
-                    <h3 class="text-center">Submit a new Blog Category </h3>
+                    <h3 class="text-center">Submit a new Category </h3>
                     <!-- Insert new blog post form if user is logged in. -->
                     <form class="new-blog-category">
                         <input type="text" name="title" placeholder="New Category Title" input pattern=".{3,50}" required title="3min 50max" class="form-control" />
