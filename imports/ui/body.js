@@ -23,7 +23,7 @@ Template.home.onCreated(function bodyOnCreated() {
 //Get the total amount of posts in the whole blog.
 
 
-PostsIndex = new EasySearch.Index({
+CheckPostsIndex = new EasySearch.Index({
     collection: Posts,
     fields: ['title', 'body', 'username', 'createdAt'],
     engine: new EasySearch.Minimongo()
@@ -31,7 +31,7 @@ PostsIndex = new EasySearch.Index({
 
 
 Template.home.helpers({
-    postsIndex: () => PostsIndex,
+    postsIndex: () => CheckPostsIndex,
     posts() {
         const instance = Template.instance();
         if(Session.get('showUser') != undefined && Session.get('showUser') != 'all') {
@@ -44,6 +44,11 @@ Template.home.helpers({
     },
     totalCount() {
         return Posts.find({ private: false  }, { sort: { createdAt: -1 } }).count();
+    },
+    attributes() {
+        return { name: 'postsSearch',
+            placeholder: "Search by Title, Author or Key Terms"
+        };
     }
 });
 
@@ -83,4 +88,14 @@ Template.home.events({
             console.log('notworking');
         }
     },
+    'click .toggle-new-post'(event) {
+
+        if(event.target.value == 'false') {
+            $(".toggle-new-post").val(true);
+            $(".new-post-section").css('display', 'none');
+        } else {
+            $(".toggle-new-post").val(false);
+            $(".new-post-section").css('display', 'block');
+        }
+    }
 });

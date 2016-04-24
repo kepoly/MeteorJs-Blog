@@ -6,6 +6,7 @@
         {{/each}}
     </section>
     <section class="single-post-comments">
+
 {{#if currentUser}}
     <h2>Submit a new Comment</h2>
         <form class="new-comment-post">
@@ -43,7 +44,7 @@
         <div class="each-comment {{#if private}}{{#unless isOwner}}private{{/unless}}{{/if}}">
             <div class="blog-content">
                 <p class="single-comment-text">{{body}}</p>
-                <p class="single-comment-time">{{createdAt}}</p>
+                <p class="single-comment-time">{{FormatDate createdAt}} ago </p>
                 <p class="single-comment-author"><a href="/u/{{username}}">{{username}}</a> </p>
             </div>
         </div>

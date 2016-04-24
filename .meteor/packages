@@ -30,3 +30,5 @@ multiply:iron-router-progress
 accounts-base
 easy:search
 simple:rest
+easysearch:components
+easysearch:elasticsearch

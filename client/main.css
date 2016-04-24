@@ -87,6 +87,10 @@ textarea { resize:vertical ; }
 *New Blog Post Section
 */
 
+.outer-new-post {
+    position: relative;
+}
+
 .getall {
     display: block;
     margin: 0 auto 25px auto;
@@ -106,6 +110,12 @@ textarea { resize:vertical ; }
     margin-top: 25px;
 }
 
+.toggle-new-post {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 /*
 *All Posts section
 */
@@ -115,6 +125,7 @@ textarea { resize:vertical ; }
     width: 100%;
     height: 34px;
     padding: 6px 12px;
+    margin-bottom: 10px;
     font-size: 14px;
     line-height: 1.42857143;
     color: #555;
@@ -128,8 +139,13 @@ textarea { resize:vertical ; }
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-.all-posts-section {
-   background: #eee;
+.search-posts input::-webkit-input-placeholder::before {
+    color: black;
+    content: "Search any Key Terms";
+}
+
+.blog-content {
+    margin-bottom: 20px;
 }
 
 .each-post {
@@ -137,6 +153,7 @@ textarea { resize:vertical ; }
     min-height: 100px;
     text-align: center;
     word-wrap: break-word;
+    background: #eee;
 }
 
 .single-post-time {
@@ -146,7 +163,8 @@ textarea { resize:vertical ; }
 .user-options {
     text-align: center;
     font-size: 16px;
-    border-bottom: 1px solid dodgerblue;
+    background: #eee;
+    margin-bottom: 10px;
 }
 
 .user-options span {
@@ -171,6 +189,7 @@ textarea { resize:vertical ; }
     min-height: 50px;
     text-align: center;
     word-wrap: break-word;
+    background: #eee;
 }
 
 .single-comment-text {
@@ -181,8 +200,8 @@ textarea { resize:vertical ; }
 .single-comment-time {
     position: absolute;
     font-size: 10px;
-    top: 0;
-    left: 0;
+    top: 5px;
+    left: 5px;
 }
 
 .single-comment-author {

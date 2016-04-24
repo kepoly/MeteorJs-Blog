@@ -10,6 +10,33 @@ import { Comments } from '../../api/comments.js';
 
 import './singlepost.html';
 
+Template.registerHelper('FormatDate', function(date){
+    var seconds = Math.floor((new Date() - date) / 1000);
+
+    var interval = Math.floor(seconds / 31536000);
+
+    if (interval > 1) {
+        return interval + " years";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+        return interval + " months";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+        return interval + " days";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+        return interval + " hours";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+        return interval + " minutes";
+    }
+    return Math.floor(seconds) + " seconds";
+})
+
 Template.singlepost.onCreated(function singlepostOnCreated() {
     this.state = new ReactiveDict();
     Meteor.subscribe('posts');
@@ -17,8 +44,9 @@ Template.singlepost.onCreated(function singlepostOnCreated() {
 });
 
 findId = function() {
-    var data = Template.instance().data.postTitle;
-    data = Posts.findOne({title: data});
+    var title = Template.instance().data.postTitle;
+    var user = Template.instance().data.userName;
+    var data = Posts.findOne({title: title, username: user});
     return data;
 }
 
@@ -59,15 +87,16 @@ Template.singlepost.helpers({
         return this.owner === Meteor.userId();
     },
     singlepostid() {
-        var data = Template.instance().data.postTitle;
-        data = Posts.findOne({title: data});
+        var title = Template.instance().data.postTitle;
+        var user = Template.instance().data.userName;
+        var data = Posts.findOne({title: title, username: user});
         return data;
     },
     postdata() {
         return Template.instance().data;
     },
     posts() {
-        return Posts.find({ title: { $in: [Template.instance().data.postTitle] } }, { sort: { createdAt: -1 }  });
+        return Posts.find({ title: Template.instance().data.postTitle, username: Template.instance().data.userName}, { sort: { createdAt: -1 }  });
     },
     comments() {
         var postTitle = Template.instance().data.postTitle;
@@ -75,8 +104,7 @@ Template.singlepost.helpers({
         //i really dont think this is the meteor way of doing things but it works.
         var data = findId();
         if(typeof data != 'undefined') {
-
-            var ret = Comments.find({ postId: { $in: [data._id] } }, { sort: { createdAt: -1 }  });
+            var ret = Comments.find({ postId: data._id }, { sort: { createdAt: -1 }  });
             return ret;
         }
     }
