@@ -144,8 +144,13 @@ textarea { resize:vertical ; }
 
 .new-blog-post, .new-blog-category {
     background: #eee;
+    border-radius: 5px;
     padding: 10px;
     margin-bottom: 25px;
+}
+
+.new-post-section h3, .new-category-section h3 {
+    color: white;
 }
 
 .new-blog-post input[type="text"], select {

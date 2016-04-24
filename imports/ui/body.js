@@ -39,7 +39,7 @@ Template.headfoot.onCreated(function headFootOnCreated() {
 
 CheckPostsIndex = new EasySearch.Index({
     collection: Posts,
-    fields: ['title', 'body', 'username', 'createdAt'],
+    fields: ['title', 'body', 'username', 'createdAt', 'categoryname'],
     engine: new EasySearch.Minimongo()
 });
 
@@ -61,7 +61,7 @@ Template.home.helpers({
     },
     attributes() {
         return { name: 'postsSearch',
-            placeholder: "Search by Title, Author or Key Terms"
+            placeholder: "Search by Title, Author, Category or Key Terms"
         };
     },
     returnHidePost() {
