@@ -269,3 +269,49 @@ textarea { resize:vertical ; }
     margin: 0!important;
     clear: both;
 }
+
+@media(max-width: 500px) {
+    .logo-text {
+        font-size: 32px;
+    }
+    .login-link-text {
+        font-size: 20px;
+    }
+    .header-button-section {
+        width: 175px;
+        left: 25px;
+    }
+    .header-button-section button {
+        font-size: 20px;
+    }
+
+}
+
+@media(max-width: 1575px) {
+    #login-dropdown-list {
+        left: -240px;
+    }
+}
+
+@media(min-width: 600px) {
+    .accounts-dialog {
+        width: 350px;
+    }
+}
+
+@media(max-width: 375px) {
+    .main-header {
+        height: 100px;
+    }
+    .header-button-section {
+        width: 175px;
+        top: 75px;
+        left: 25px;
+    }
+    .accounts-dialog {
+        width: 250px;
+    }
+    #login-dropdown-list {
+        left: -180px;
+    }
+}
