@@ -29,7 +29,7 @@ Meteor.methods({
         if(! Meteor.userId()) {
             throw new Meteor.Error('insert-access-not-authorized');
         }
-        console.log('madeit');
+
         Comments.insert({
             body,
             createdAt: new Date(),

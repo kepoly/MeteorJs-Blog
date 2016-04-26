@@ -201,6 +201,7 @@ textarea { resize:vertical ; }
 
 .blog-content {
     margin-bottom: 20px;
+    position: relative;
 }
 
 .each-post {
@@ -209,6 +210,21 @@ textarea { resize:vertical ; }
     text-align: center;
     word-wrap: break-word;
     background: #eee;
+}
+
+.post-like-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.likeButton {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 2px;
+    margin: 0;
+    font-size: 16px;
 }
 
 .single-post-time {

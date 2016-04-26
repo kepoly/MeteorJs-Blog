@@ -19,10 +19,30 @@
                 <h3 class="single-post-title"><a href="/p/{{title}}/{{username}}">{{title}}</a></h3>
                 <p class="single-post-text">{{body}}</p>
                 <p class="single-post-time">{{FormatDate createdAt}} ago - in <a href="/c/{{categoryname}}">{{categoryname}}</a> - by <a href="/u/{{username}}">{{username}}</a></p>
+
+
+                <div class="post-like-box">
+
+                    {{#if likeUserCheck.isNew}}
+                        <button class="like-post likeButton" value="true">+</button>
+                        {{likeCount}}
+                        <button class="like-post likeButton" value="false">-</button>
+                        {{/if}}
+                    {{#unless likeUserCheck.isNew}}
+                        {{likeCount}}
+                    {{#if likeUserCheck.icon}}
+                        <button class="like-post likeButton" value="false"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        {{else}}
+                        <button class="like-post likeButton" value="false"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                    {{/if}}
+
+                        {{/unless}}
+
+                </div>
+
             </div>
     </div>
     {{/if}}
-
     <!-- User options only shown if own the post. -->
     <div class="user-options {{#if private}}{{#unless isOwner}}private{{/unless}}{{/if}}">
         {{#if isOwner}}

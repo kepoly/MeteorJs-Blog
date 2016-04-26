@@ -4,14 +4,16 @@
 
 import { Template } from 'meteor/templating';
 import { Posts } from '../../api/posts.js';
+import { Likes } from '../../api/likes.js';
 
 import './post.html';
 
-function timeSince(date) {
+Template.post.onCreated(function postOnCreated() {
+    this.state = new ReactiveDict();
+    Meteor.subscribe('likes');
+});
 
-
-}
-
+//return date as ..ago
 Template.registerHelper('FormatDate', function(date){
     var seconds = Math.floor((new Date() - date) / 1000);
 
@@ -42,6 +44,35 @@ Template.registerHelper('FormatDate', function(date){
 Template.post.helpers({
     isOwner() {
         return this.owner === Meteor.userId();
+    },
+    likeCount() {
+        var likeCount = Likes.find({"typeid": this._id, "liked": true}).count();
+        var dislikeCount = Likes.find({"typeid": this._id, "liked": false}).count();
+        return likeCount - dislikeCount;
+    },
+    likeUserCheck() {
+        var retval = false;
+        var retvalBoolean = false;
+        var returnDetails = {};
+
+        var isLiked = Likes.find({"typeid": this._id, "owner": Meteor.userId()}).count();
+        if(isLiked > 0) {
+
+            var isTrue = Likes.find({"typeid": this._id, "owner": Meteor.userId(), "liked": true}).count();
+            if(isTrue > 0) {
+                retval = false;
+            } else {
+                retval = true;
+            }
+            returnDetails["icon"] = retval;
+            returnDetails["isNew"] = false;
+            return returnDetails;
+        } else {
+            returnDetails["icon"] = "both";
+            returnDetails["isNew"] = true;
+            return returnDetails;
+        }
+
     }
 });
 
@@ -79,6 +110,42 @@ Template.post.events({
             Session.set("showUser", getText);
         } else {
             console.log('notworking');
+        }
+    },
+    'click .like-post'(event, instance) {
+        //get the incoming button value from the click event
+        var getText = event.target.value;
+
+        //check if the user has already liked this post
+        var checkIfLiked = Likes.find({"typeid": this._id, "owner": Meteor.userId()}).count();
+
+        //get the button value to be used if the user liked the post
+        //can be moved into other if.
+        if(getText == 'true') {
+            getText = true;
+        } else {
+            getText = false;
+        }
+
+        //if is new run insert based on which button was clicked
+        if(checkIfLiked < 1) {
+
+            if(getText == true) {
+                Meteor.call('likes.insert', true, "post", this._id);
+            } else {
+                Meteor.call('likes.insert', false, "post", this._id);
+            }
+
+            //else update the record based on if they previously liked or disliked the post.
+        } else {
+            var checkIfFalse = Likes.find({"typeid": this._id, "owner": Meteor.userId(), "liked": false}).count();
+            if(checkIfFalse < 1) {
+                Meteor.call('likes.updateAfterLiked', false, this._id);
+            } else {
+                Meteor.call('likes.updateAfterLiked', true, this._id);
+
+            }
+
         }
     },
 });
