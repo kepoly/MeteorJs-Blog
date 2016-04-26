@@ -49,8 +49,8 @@ Template.post.helpers({
         //currently this creates for some odd times when you're testing.
         //like/dislike can be 0 so when you remove one from like to dislike it is like removing two for the first time.
         //eg: 3L 0D = 3-0 = 3: 2L 1D = 2-1 = 0.
-        var likeCount = Likes.find({"typeid": this._id, "liked": true}).count();
-        var dislikeCount = Likes.find({"typeid": this._id, "liked": false}).count();
+        var likeCount = Likes.find({"type": "post", "typeid": this._id, "liked": true}).count();
+        var dislikeCount = Likes.find({"type": "post", "typeid": this._id, "liked": false}).count();
         return likeCount - dislikeCount;
     },
     likeUserCheck() {
@@ -58,10 +58,10 @@ Template.post.helpers({
         var retvalBoolean = false;
         var returnDetails = {};
 
-        var isLiked = Likes.find({"typeid": this._id, "owner": Meteor.userId()}).count();
+        var isLiked = Likes.find({"type": "post", "typeid": this._id, "owner": Meteor.userId()}).count();
         if(isLiked > 0) {
 
-            var isTrue = Likes.find({"typeid": this._id, "owner": Meteor.userId(), "liked": true}).count();
+            var isTrue = Likes.find({"type": "post", "typeid": this._id, "owner": Meteor.userId(), "liked": true}).count();
             if(isTrue > 0) {
                 retval = false;
             } else {
@@ -75,7 +75,6 @@ Template.post.helpers({
             returnDetails["isNew"] = true;
             return returnDetails;
         }
-
     }
 });
 

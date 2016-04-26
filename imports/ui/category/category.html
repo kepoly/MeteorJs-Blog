@@ -1,14 +1,10 @@
 <template name="category">
 
     <div class="container">
-
         <h1>Category: {{categorydata}} <br />Owner: {{categoryOwner.username}}</h1>
-
         {{#each categoryposts}}
             {{> post}}
         {{/each}}
-
-
     </div>
 
 </template>

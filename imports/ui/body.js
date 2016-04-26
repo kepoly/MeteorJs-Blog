@@ -36,7 +36,6 @@ Template.headfoot.onCreated(function headFootOnCreated() {
 //Get the total count of blog posts for the signed in user.
 //Get the total amount of posts in the whole blog.
 
-
 CheckPostsIndex = new EasySearch.Index({
     collection: Posts,
     fields: ['title', 'body', 'username', 'createdAt', 'categoryname'],
@@ -46,7 +45,6 @@ CheckPostsIndex = new EasySearch.Index({
         }
     })
 });
-
 
 Template.home.helpers({
     postsIndex: () => CheckPostsIndex,

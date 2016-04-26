@@ -46,6 +46,30 @@
                 <p class="single-comment-text">{{body}}</p>
                 <p class="single-comment-time">{{FormatDate createdAt}} ago </p>
                 <p class="single-comment-author"><a href="/u/{{username}}">{{username}}</a> </p>
+
+                <div class="post-like-box">
+                    {{#if currentUser}}
+                        {{#if likeUserCheck.isNew}}
+                            <button class="like-comment likeButton" value="true">+</button>
+                            {{likeCount}}
+                            <button class="like-comment likeButton" value="false">-</button>
+                        {{/if}}
+                        {{#unless likeUserCheck.isNew}}
+                            {{likeCount}}
+                            {{#if likeUserCheck.icon}}
+                                <button class="like-comment likeButton" value="false"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                            {{else}}
+                                <button class="like-comment likeButton" value="false"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            {{/if}}
+
+                        {{/unless}}
+
+                    {{else}}
+                        {{likeCount}}
+                    {{/if}}
+                </div>
+
+
             </div>
         </div>
     {{/if}}
