@@ -32,6 +32,9 @@ Template.category.helpers({
     },
     categoryposts() {
         return Posts.find({ categoryname: { $in: [Template.instance().data] } }, { sort: { createdAt: -1 }  });
+    },
+    categoryOwner() {
+        return Posts.findOne({ categoryname: { $in: [Template.instance().data] } });
     }
 
 });

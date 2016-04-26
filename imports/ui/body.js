@@ -40,7 +40,11 @@ Template.headfoot.onCreated(function headFootOnCreated() {
 CheckPostsIndex = new EasySearch.Index({
     collection: Posts,
     fields: ['title', 'body', 'username', 'createdAt', 'categoryname'],
-    engine: new EasySearch.Minimongo()
+    engine: new EasySearch.Minimongo({
+        sort: function() {
+            return {createdAt: -1};
+        }
+    })
 });
 
 
@@ -110,6 +114,7 @@ Template.headfoot.events({
         //reset the fields after insert.
         target.title.value = '';
         target.body.value = '';
+        Session.set('hidePost', true);
     },
     'submit .new-blog-category'(event) {
         event.preventDefault();
@@ -126,6 +131,7 @@ Template.headfoot.events({
         //reset the fields after insert.
         target.title.value = '';
         target.body.value = '';
+        Session.set('hidePost', true);
     },
     'click .toggle-new-post'(event) {
         Session.set('hidePost', !Session.get('hidePost'));

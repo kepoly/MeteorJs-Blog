@@ -22,7 +22,7 @@
 
 
                 <div class="post-like-box">
-
+        {{#if currentUser}}
                     {{#if likeUserCheck.isNew}}
                         <button class="like-post likeButton" value="true">+</button>
                         {{likeCount}}
@@ -38,6 +38,9 @@
 
                         {{/unless}}
 
+            {{else}}
+            {{likeCount}}
+{{/if}}
                 </div>
 
             </div>

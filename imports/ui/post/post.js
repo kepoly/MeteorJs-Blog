@@ -46,6 +46,9 @@ Template.post.helpers({
         return this.owner === Meteor.userId();
     },
     likeCount() {
+        //currently this creates for some odd times when you're testing.
+        //like/dislike can be 0 so when you remove one from like to dislike it is like removing two for the first time.
+        //eg: 3L 0D = 3-0 = 3: 2L 1D = 2-1 = 0.
         var likeCount = Likes.find({"typeid": this._id, "liked": true}).count();
         var dislikeCount = Likes.find({"typeid": this._id, "liked": false}).count();
         return likeCount - dislikeCount;
