@@ -1,0 +1,69 @@
+<template name="headfoot">
+<div class="container headfootcont">
+
+    <header class="main-header">
+        <div class="col-md-4">
+            <h1 class="logo-text"><a href="/">Postsly</a></h1>
+        </div>
+        <div class="col-md-4">
+            <div class="header-button-section">
+    {{#if currentUser}}
+                {{#if returnHidePost}}
+                    <button class="fa fa-plus-square-o toggle-new-post"></button>
+                {{else}}
+                    <button class="fa fa-minus-square-o toggle-new-post"></button>
+                {{/if}}
+
+                    <button class="fa fa-bell-o"></button>
+                    <button class="fa fa-comments-o"></button>
+                    <button class="fa fa-users"></button>
+    {{/if}}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="user-account-section">
+                {{> loginButtons}}
+            </div>
+        </div>
+
+    </header>
+
+    {{#if currentUser}}
+        {{#unless returnHidePost}}
+            <div class="outer-new-post">
+                <section class="new-post-section">
+                    <h3 class="text-center">Submit a new Post </h3>
+                    <!-- Insert new blog post form if user is logged in. -->
+                    <form class="new-blog-post">
+                        <input type="text" name="title" placeholder="New Post Title" input pattern=".{3,50}" required title="3min 50max" class="form-control" />
+                        <textarea type="text" name="body" placeholder="New Post Body" input pattern=".{5,300}" required title="5min 300max" class="form-control new-blog-body"></textarea>
+                        <select name="category" class="form-control" required>
+                            {{#each categories}}
+                                <option value="{{_id}}+{{title}}">{{title}}</option>
+                            {{/each}}
+                        </select>
+                        <label>Post as Private - <input type="checkbox" checked="true" name="isPrivate" /></label>
+                        <input type="submit" class="btn btn-default form-control new-blog-post-submit" />
+                    </form>
+                </section>
+                <section class="new-category-section">
+                    <h3 class="text-center">Submit a new Category </h3>
+                    <!-- Insert new blog post form if user is logged in. -->
+                    <form class="new-blog-category">
+                        <input type="text" name="title" placeholder="New Category Title" input pattern=".{3,50}" required title="3min 50max" class="form-control" />
+                        <textarea type="text" name="body" placeholder="New Category Body" input pattern=".{5,300}" required title="5min 300max" class="form-control new-blog-body"></textarea>
+                        <label>Category as Private - <input type="checkbox" checked="true" name="isPrivate" /></label>
+                        <input type="submit" class="btn btn-default form-control new-blog-post-submit" />
+                    </form>
+                </section>
+            </div>
+        {{/unless}}
+    {{/if}}
+</div>
+    {{> yield}}
+
+
+    <footer class="main-footer">
+        <p class="text-center">Postsly: Interactive, Live, Easy to use Platform.</p>
+    </footer>
+</template>

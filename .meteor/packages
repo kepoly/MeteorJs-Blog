@@ -23,3 +23,14 @@ accounts-password
 msavin:mongol
 reactive-dict
 session
+iron:router
+mrt:moment
+sacha:spin
+multiply:iron-router-progress
+accounts-base
+easy:search
+simple:rest
+easysearch:components
+easysearch:elasticsearch
+fortawesome:fontawesome
+meteorhacks:kadira

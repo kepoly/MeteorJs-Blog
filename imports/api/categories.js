@@ -1,17 +1,17 @@
 /**
- * Created by kepoly on 4/20/2016.
+ * Created by kepoly on 4/24/2016.
  */
 
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
-//create a new mongo collection to hold the blog posts
-export const Posts = new Mongo.Collection('posts');
+//create a new mongo collection to hold the blog categories
+export const Categories = new Mongo.Collection('categories');
 
 if(Meteor.isServer) {
-    Meteor.publish('posts', function postsPublication() {
-        return Posts.find({
+    Meteor.publish('categories', function categoriesPublication() {
+        return Categories.find({
             $or: [
                 { private: { $ne: true } },
                 { owner: this.userId },
@@ -22,78 +22,74 @@ if(Meteor.isServer) {
 
 Meteor.methods({
     //retrieve the incoming data and make a new post to the collection
-    'posts.insert'(title, body, category, categoryname, isPrivate) {
+    'categories.insert'(title, body, isPrivate) {
 
         check(title, String);
         check(body, String);
-        check(category, String);
-        check(categoryname, String);
         check(isPrivate, Boolean);
 
         if(! Meteor.userId()) {
-             throw new Meteor.Error('insert-access-not-authorized');
+            throw new Meteor.Error('insert-access-not-authorized');
         }
 
-        Posts.insert({
+        Categories.insert({
             title,
             body,
             createdAt: new Date(),
             owner: Meteor.userId(),
             username: Meteor.user().username,
-            category: category,
-            categoryname: categoryname,
             private: isPrivate,
             editing: false,
         });
     },
-    //delete from the collection where the id equals the incoming postId parameter
-    'posts.remove'(postId) {
+    //delete from the collection where the id equals the incoming categoryId parameter
+    'categories.remove'(categoryId) {
 
-        check(postId, String);
+        check(categoryId, String);
 
-        const post = Posts.findOne(postId);
+        const post = Categories.findOne(categoryId);
 
         if(post.private && post.owner !== Meteor.userId()) {
             throw new Meteor.Error('delete-access-not-authorized');
         }
-        Posts.remove(postId);
+        Categories.remove(categoryId);
     },
     //enable editing on the front end using editing field in the collection
-    'posts.edit'(postId, editingNow) {
-        check(postId, String);
+    'categories.edit'(categoryId, editingNow) {
+        check(categoryId, String);
         check(editingNow, Boolean);
 
-        const post = Posts.findOne(postId);
+        const post = Categories.findOne(categoryId);
 
         if(post.owner !== Meteor.userId()) {
             throw new Meteor.Error('set-private-access-not-authorized');
         }
-        Posts.update(postId, { $set: { editing: editingNow }});
+        Categories.update(categoryId, { $set: { editing: editingNow }});
     },
     //after editing is enabled you may update the data in the collection
-    'posts.update'(postId, title, body) {
-        check(postId, String);
+    'categories.update'(categoryId, title, body) {
+        check(categoryId, String);
         check(title, String);
         check(body, String);
 
-        const post = Posts.findOne(postId);
+        const post = Categories.findOne(categoryId);
 
         if(post.owner !== Meteor.userId()) {
             throw new Meteor.Error('set-private-access-not-authorized');
         }
-        Posts.update(postId, { $set: { title: title, body: body, editing: false }});
+        Categories.update(categoryId, { $set: { title: title, body: body, editing: false }});
     },
     //set a post to private so only you may view it
-    'posts.setPrivate'(postId, setToPrivate) {
+    'categories.setPrivate'(categoryId, setToPrivate) {
         "use strict";
-        check(postId, String);
+        check(categoryId, String);
         check(setToPrivate, Boolean);
 
-        const post = Posts.findOne(postId);
+        const post = categories.findOne(categoryId);
 
         if(post.owner !== Meteor.userId()) {
             throw new Meteor.Error('set-private-access-not-authorized');
         }
-        Posts.update(postId, { $set: { private: setToPrivate } });
+        Categories.update(categoryId, { $set: { private: setToPrivate } });
     },
 });

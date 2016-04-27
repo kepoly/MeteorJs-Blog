@@ -1,14 +1,18 @@
 /* CSS declarations go here */
 @import url(https://fonts.googleapis.com/css?family=Cabin);
+@import url(https://fonts.googleapis.com/css?family=Oswald);
 
 /*
 *
 * Basic Styles
 *
 */
+
 body {
-    font-family: 'Cabin', sans-serif;
+    font-family: 'Oswald', 'Cabin', sans-serif;
     background: #eee;
+    position: relative;
+    padding-bottom: 100px;
 }
 
 textarea { resize:vertical ; }
@@ -23,44 +27,123 @@ textarea { resize:vertical ; }
 }
 
 .container {
-    border-top: 2px solid dodgerblue;
     background: white;
     padding-bottom: 25px;
-}
-
-.private {
-    display: none;
 }
 
 /*
 *Header Section
 */
+
+.headfootcont {
+    background: dodgerblue;
+}
+
 .main-header {
-    padding: 15px;
+    position: relative;
+    height: 75px;
+}
+
+.scroll-header {
+    position: fixed;
+    background: dodgerblue;
+    height: 75px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    opacity: 1;
+}
+
+.scroll-header .header-button-section {
+    margin-top: 0;
+    top: 20px;
 }
 
 .logo-text {
     font-size: 44px;
-    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    margin-top: 0;
 }
+
+.logo-text a {
+    color: white;
+}
+
+.logo-text a:hover {
+    color: #eee;
+    text-decoration: none;
+}
+
+.header-button-section {
+    position: absolute;
+    width: 230px;
+    left:0;
+    right:0;
+    top: 30px;
+    margin: 0 auto;
+}
+
+.header-button-section button {
+    font-size: 36px;
+    margin-right: 10px;
+    color: white;
+    background: transparent;
+    border: none;
+}
+
+.header-button-section button:nth-last-child(1) {
+    margin-right: 0;
+}
+
+.header-button-section button:hover {
+    color: #eee;
+    cursor: pointer;
+}
+
 /*
 *Footer Section
 */
 .main-footer {
     margin-top: 10px;
+    color: white;
+    background: dodgerblue;
+    margin-bottom: 0;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.main-footer p {
+    margin: 0;
+    padding-top: 15px;
+    font-size: 18px;
 }
 
 /*
 *User Accounts Section
 */
 .user-account-section {
-    text-align: center;
-    margin-bottom: 25px;
+    position: absolute;
+    right: 0;
+    top: 25px;
+
+}
+
+#login-buttons a, .accounts-dialog a {
+    text-decoration: none;
 }
 
 .login-link-text {
     font-size: 32px;
+    color: white;
+}
 
+.login-link-text:hover {
+    color: #eee;
 }
 
 #login-dropdown-list {
@@ -68,6 +151,10 @@ textarea { resize:vertical ; }
     right: 0;
     margin-left: auto;
     margin-right: auto;
+}
+
+#login-buttons .login-button, .accounts-dialog .login-button {
+    background: dodgerblue;
 }
 
 .accounts-dialog {
@@ -82,18 +169,31 @@ textarea { resize:vertical ; }
 *New Blog Post Section
 */
 
+.outer-new-post {
+    position: relative;
+}
+
 .getall {
     display: block;
     margin: 0 auto 25px auto;
 }
 
-.new-blog-post {
+.new-blog-post, .new-blog-category {
     background: #eee;
+    border-radius: 5px;
     padding: 10px;
     margin-bottom: 25px;
 }
 
-.new-blog-post input[type="text"] {
+.new-post-section h3, .new-category-section h3 {
+    color: white;
+}
+
+.new-blog-post input[type="text"], select {
+    margin: 5px 0;
+}
+
+.new-blog-category input[type="text"], select {
     margin: 5px 0;
 }
 
@@ -101,12 +201,42 @@ textarea { resize:vertical ; }
     margin-top: 25px;
 }
 
+.toggle-new-post {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 /*
 *All Posts section
 */
-.all-posts-section {
-   background: #eee;
-    border-top: 1px solid dodgerblue;
+
+.search-posts input {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid dodgerblue;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.search-posts input::-webkit-input-placeholder::before {
+    color: black;
+    content: "Search any Key Terms";
+}
+
+.blog-content {
+    position: relative;
 }
 
 .each-post {
@@ -114,6 +244,22 @@ textarea { resize:vertical ; }
     min-height: 100px;
     text-align: center;
     word-wrap: break-word;
+    background: #eee;
+}
+
+.post-like-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.likeButton {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 2px;
+    margin: 0;
+    font-size: 16px;
 }
 
 .single-post-time {
@@ -122,9 +268,13 @@ textarea { resize:vertical ; }
 
 .user-options {
     text-align: center;
-    padding: 5px 5px 20px 5px;
     font-size: 16px;
-    border-bottom: 1px solid dodgerblue;
+    background: #eee;
+    margin-bottom: 10px;
+}
+
+.user-options span {
+    padding: 5px 15px 15px 0;
 }
 
 .delete, .toggle-edit, .toggle-private {
@@ -133,4 +283,99 @@ textarea { resize:vertical ; }
 
 .delete:hover, .toggle-edit:hover, .toggle-private:hover {
     cursor: pointer;
+}
+
+/*
+*Single Post Page
+*/
+
+.each-comment {
+    position: relative;
+    padding: 5px;
+    min-height: 50px;
+    text-align: center;
+    word-wrap: break-word;
+    background: #eee;
+}
+
+.single-comment-text {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.single-comment-time {
+    position: absolute;
+    font-size: 10px;
+    top: 5px;
+    left: 5px;
+}
+
+.single-comment-author {
+
+}
+.private {
+    visibility: hidden;
+    display: none;
+    padding: 0!important;
+    margin: 0!important;
+    clear: both;
+}
+
+@media(max-width: 500px) {
+    .logo-text {
+        font-size: 32px;
+    }
+    .login-link-text {
+        font-size: 20px;
+    }
+    .header-button-section {
+        width: 175px;
+        left: 25px;
+    }
+    .header-button-section button {
+        font-size: 20px;
+    }
+
+}
+
+@media(max-width: 1575px) {
+    #login-dropdown-list {
+        left: -240px;
+    }
+}
+
+@media(min-width: 600px) {
+    .accounts-dialog {
+        width: 350px;
+    }
+}
+
+@media(max-width: 375px) {
+    .main-header {
+        height: 100px;
+    }
+    .header-button-section {
+        width: 175px;
+        top: 75px;
+        left: 25px;
+    }
+    .accounts-dialog {
+        width: 250px;
+    }
+    #login-dropdown-list {
+        left: -180px;
+    }
+}
+
+/*
+*
+*Quick
+*
+*/
+.single-post-text {
+    display: none;
+}
+
+.singlepost .single-post-text {
+    display: block;
 }
