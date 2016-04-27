@@ -9,6 +9,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { Posts } from '../../api/posts.js';
 import { Comments } from '../../api/comments.js';
 import { Likes } from '../../api/likes.js';
+import { Categories } from '../../api/categories';
 
 import './user.html';
 
@@ -52,10 +53,10 @@ Template.registerHelper('FormatDate', function(date){
 
 Template.user.onCreated(function userOnCreated() {
     this.state = new ReactiveDict();
-    console.log(this.data);
     Meteor.subscribe('posts');
     Meteor.subscribe('comments');
     Meteor.subscribe('likes');
+    Meteor.subscribe('categories');
 });
 
 Template.user.helpers({
