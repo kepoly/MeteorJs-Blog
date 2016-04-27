@@ -1,6 +1,6 @@
 import '../imports/startup/accounts-config.js';
 import '../imports/ui/body.js';
-import '../imports/ui/user/user'
+import '../imports/ui/user/user';
 import '../imports/ui/post/singlepost';
 import '../imports/ui/category/category';
 import '../imports/ui/loading.html';

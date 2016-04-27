@@ -133,9 +133,9 @@ Template.post.events({
         if(checkIfLiked < 1) {
 
             if(getText == true) {
-                Meteor.call('likes.insert', true, "post", this._id);
+                Meteor.call('likes.insert', true, "post", this._id, this.username);
             } else {
-                Meteor.call('likes.insert', false, "post", this._id);
+                Meteor.call('likes.insert', false, "post", this._id, this.username);
             }
 
             //else update the record based on if they previously liked or disliked the post.

@@ -17,10 +17,11 @@ if(Meteor.isServer) {
 }
 
 Meteor.methods({
-    'likes.insert'(liked, type, id) {
+    'likes.insert'(liked, type, id, username) {
         check(liked, Boolean);
         check(type, String);
         check(id, String);
+        check(username, String);
 
         if(! Meteor.userId()) {
             throw new Meteor.Error('insert-access-not-authorized');
@@ -31,7 +32,8 @@ Meteor.methods({
             owner: Meteor.userId(),
             username: Meteor.user().username,
             type: type,
-            typeid: id
+            typeid: id,
+            typeowner: username
         });
     },
     'likes.updateAfterLiked'(liked, id) {

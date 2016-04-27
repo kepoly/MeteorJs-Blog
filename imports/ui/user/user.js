@@ -52,6 +52,7 @@ Template.registerHelper('FormatDate', function(date){
 
 Template.user.onCreated(function userOnCreated() {
     this.state = new ReactiveDict();
+    console.log(this.data);
     Meteor.subscribe('posts');
     Meteor.subscribe('comments');
     Meteor.subscribe('likes');
@@ -74,11 +75,16 @@ Template.user.helpers({
     },
     userkarma() {
         var returnDetails = {};
-        var postKarmaUp = Likes.find({"username": Template.instance().data, "type": "post", "liked": true}).count();
-        var postKarmaDown = Likes.find({"username": Template.instance().data, "type": "post", "liked": false}).count();
-        var commentKarmaUp = Likes.find({"username": Template.instance().data, "type": "comment", "liked": true}).count();
-        var commentKarmaDown = Likes.find({"username": Template.instance().data, "type": "comment", "liked": false}).count();
+
+        //TODO
+        //Switch this to the users id where typeowner and get the users id by username here instead.
+        //TODO
+        var username = Template.instance().data;
+        var postKarmaUp = Likes.find({"typeowner": username, "type": "post", "liked": true}).count();
+        var postKarmaDown = Likes.find({"typeowner": username, "type": "post", "liked": false}).count();
         returnDetails["postKarma"] = postKarmaUp - postKarmaDown;
+        var commentKarmaUp = Likes.find({"typeowner": username, "type": "comment", "liked": true}).count();
+        var commentKarmaDown = Likes.find({"typeowner": username, "type": "comment", "liked": false}).count();
         returnDetails["commentKarma"] = commentKarmaUp - commentKarmaDown;
         return returnDetails;
     }
