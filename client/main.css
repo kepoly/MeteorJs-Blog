@@ -121,6 +121,10 @@ textarea { resize:vertical ; }
     margin-right: auto;
 }
 
+#login-buttons .login-button, .accounts-dialog .login-button {
+    background: dodgerblue;
+}
+
 .accounts-dialog {
     width: 300px;
 }

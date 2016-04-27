@@ -3,7 +3,8 @@
    <div class="container">
 
        <h1>Username: {{userdata}} </h1>
-
+        <h3>Post Count: {{extendedData.postCount}}</h3>
+       <h3>Comment Count: {{extendedData.commentCount}}</h3>
        {{#each userposts}}
            {{> post}}
        {{/each}}
