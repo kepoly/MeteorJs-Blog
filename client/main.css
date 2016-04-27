@@ -236,7 +236,6 @@ textarea { resize:vertical ; }
 }
 
 .blog-content {
-    margin-bottom: 20px;
     position: relative;
 }
 
@@ -366,4 +365,17 @@ textarea { resize:vertical ; }
     #login-dropdown-list {
         left: -180px;
     }
+}
+
+/*
+*
+*Quick
+*
+*/
+.single-post-text {
+    display: none;
+}
+
+.singlepost .single-post-text {
+    display: block;
 }

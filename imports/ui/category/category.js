@@ -35,6 +35,9 @@ Template.category.helpers({
     },
     categoryOwner() {
         return Posts.findOne({ categoryname: { $in: [Template.instance().data] } });
+    },
+    totalposts() {
+        return Posts.find({ categoryname: { $in: [Template.instance().data] } }).count();
     }
 
 });

@@ -8,6 +8,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Posts } from '../../api/posts.js';
 import { Comments } from '../../api/comments.js';
+import { Likes } from '../../api/likes.js';
 
 import './user.html';
 
@@ -53,6 +54,7 @@ Template.user.onCreated(function userOnCreated() {
     this.state = new ReactiveDict();
     Meteor.subscribe('posts');
     Meteor.subscribe('comments');
+    Meteor.subscribe('likes');
 });
 
 Template.user.helpers({
@@ -68,6 +70,16 @@ Template.user.helpers({
         var commentCount = Comments.find({username: {$in: [Template.instance().data]}}).count();
         returnDetails["postCount"] = postCount;
         returnDetails["commentCount"] = commentCount;
+        return returnDetails;
+    },
+    userkarma() {
+        var returnDetails = {};
+        var postKarmaUp = Likes.find({"username": Template.instance().data, "type": "post", "liked": true}).count();
+        var postKarmaDown = Likes.find({"username": Template.instance().data, "type": "post", "liked": false}).count();
+        var commentKarmaUp = Likes.find({"username": Template.instance().data, "type": "comment", "liked": true}).count();
+        var commentKarmaDown = Likes.find({"username": Template.instance().data, "type": "comment", "liked": false}).count();
+        returnDetails["postKarma"] = postKarmaUp - postKarmaDown;
+        returnDetails["commentKarma"] = commentKarmaUp - commentKarmaDown;
         return returnDetails;
     }
 });

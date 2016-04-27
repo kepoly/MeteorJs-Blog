@@ -7,6 +7,7 @@
         </div>
         <div class="col-md-4">
             <div class="header-button-section">
+    {{#if currentUser}}
                 {{#if returnHidePost}}
                     <button class="fa fa-plus-square-o toggle-new-post"></button>
                 {{else}}
@@ -16,6 +17,7 @@
                     <button class="fa fa-bell-o"></button>
                     <button class="fa fa-comments-o"></button>
                     <button class="fa fa-users"></button>
+    {{/if}}
             </div>
         </div>
         <div class="col-md-4">
@@ -24,20 +26,6 @@
             </div>
         </div>
 
-    </header>
-
-    <header class="scroll-header hidden">
-        <div class="header-button-section">
-            {{#if returnHidePost}}
-                <button class="fa fa-plus-square-o toggle-new-post"></button>
-            {{else}}
-                <button class="fa fa-minus-square-o toggle-new-post"></button>
-            {{/if}}
-
-            <button class="fa fa-bell-o"></button>
-            <button class="fa fa-comments-o"></button>
-            <button class="fa fa-users"></button>
-        </div>
     </header>
 
     {{#if currentUser}}
