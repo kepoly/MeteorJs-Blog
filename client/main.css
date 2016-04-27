@@ -7,9 +7,12 @@
 * Basic Styles
 *
 */
+
 body {
     font-family: 'Oswald', 'Cabin', sans-serif;
     background: #eee;
+    position: relative;
+    padding-bottom: 100px;
 }
 
 textarea { resize:vertical ; }
@@ -109,6 +112,9 @@ textarea { resize:vertical ; }
     background: dodgerblue;
     margin-bottom: 0;
     height: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .main-footer p {
