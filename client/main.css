@@ -41,6 +41,22 @@ textarea { resize:vertical ; }
     height: 75px;
 }
 
+.scroll-header {
+    position: fixed;
+    background: dodgerblue;
+    height: 75px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    opacity: 1;
+}
+
+.scroll-header .header-button-section {
+    margin-top: 0;
+    top: 20px;
+}
+
 .logo-text {
     font-size: 44px;
     position: absolute;
@@ -89,6 +105,16 @@ textarea { resize:vertical ; }
 */
 .main-footer {
     margin-top: 10px;
+    color: white;
+    background: dodgerblue;
+    margin-bottom: 0;
+    height: 50px;
+}
+
+.main-footer p {
+    margin: 0;
+    padding-top: 15px;
+    font-size: 18px;
 }
 
 /*
@@ -334,4 +360,9 @@ textarea { resize:vertical ; }
     #login-dropdown-list {
         left: -180px;
     }
+}
+
+.hidden {
+    visibility: hidden;
+    display: none;
 }

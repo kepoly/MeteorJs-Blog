@@ -25,6 +25,21 @@
         </div>
 
     </header>
+
+    <header class="scroll-header hidden">
+        <div class="header-button-section">
+            {{#if returnHidePost}}
+                <button class="fa fa-plus-square-o toggle-new-post"></button>
+            {{else}}
+                <button class="fa fa-minus-square-o toggle-new-post"></button>
+            {{/if}}
+
+            <button class="fa fa-bell-o"></button>
+            <button class="fa fa-comments-o"></button>
+            <button class="fa fa-users"></button>
+        </div>
+    </header>
+
     {{#if currentUser}}
         {{#unless returnHidePost}}
             <div class="outer-new-post">
@@ -58,4 +73,9 @@
     {{/if}}
 </div>
     {{> yield}}
+
+
+    <footer class="main-footer">
+        <p class="text-center">Postsly: Interactive, Live, Easy to use Platform.</p>
+    </footer>
 </template>
