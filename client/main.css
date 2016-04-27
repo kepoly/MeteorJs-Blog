@@ -361,8 +361,3 @@ textarea { resize:vertical ; }
         left: -180px;
     }
 }
-
-.hidden {
-    visibility: hidden;
-    display: none;
-}

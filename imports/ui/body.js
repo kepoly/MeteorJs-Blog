@@ -23,16 +23,6 @@ Template.home.onCreated(function bodyOnCreated() {
 Template.headfoot.onCreated(function headFootOnCreated() {
    this.state = new ReactiveDict();
 
-    $(window).bind('scroll', function () {
-        if ($(window).scrollTop() > 50) {
-            $('.main-header').addClass('hidden');
-            $('.scroll-header').removeClass('hidden');
-        } else {
-            $('.scroll-header').addClass('hidden');
-            $('.main-header').removeClass('hidden');
-        }
-    });
-
     //maybe localstorage is better here?
     if(Session.get('hidePost') === undefined) {
         Session.set('hidePost', 'true');
