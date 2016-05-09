@@ -8,14 +8,23 @@
 *
 */
 
+html {
+    height: 100%;
+}
+
+
 body {
     font-family: 'Oswald', 'Cabin', sans-serif;
     background: #eee;
     position: relative;
     padding-bottom: 100px;
+    min-height: 100%;
 }
 
-textarea { resize:vertical ; }
+textarea {
+    resize: vertical;
+    max-height: 100px;
+}
 
 /*
 *
@@ -107,14 +116,14 @@ textarea { resize:vertical ; }
 *Footer Section
 */
 .main-footer {
-    margin-top: 10px;
-    color: white;
     background: dodgerblue;
+    margin-top: 10px;
     margin-bottom: 0;
     height: 50px;
+    width: 100%;
     position: absolute;
     bottom: 0;
-    width: 100%;
+    color: white;
 }
 
 .main-footer p {
